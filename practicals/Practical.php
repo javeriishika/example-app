@@ -1,49 +1,62 @@
+
 <?php
-/**
- * Class representing a Practical utility with static functions.
- */
+
 class Practical {
-    /**
-     * Calculates the sum of an array of numbers.
-     *
-     * @param array $numbers An array of numbers.
-     *
-     * @return int The sum of the numbers.
-     */
-    public static function calculateSum(array $numbers) {
-        return array_sum($numbers);
+    //Prints "Hello, World!" to the standard output.
+    public static function printHello() {
+        echo "Hello, World!";
     }
 
-    /**
-     * Checks if a given number is even.
-     *
-     * @param int $number The number to check.
-     *
-     * @return bool True if the number is even, false otherwise.
-     */
-    public static function isEven($number) {
-        return $number % 2 === 0;
-    }
 
-    /**
-     * Converts a string to uppercase.
-     *
-     * @param string $inputString The input string.
-     *
-     * @return string The uppercase version of the input string.
-     */
-    public static function convertToUpperCase($inputString) {
-        return strtoupper($inputString);
+    //Takes two numbers as arguments and returns their sum.
+
+    public static function add($num1, $num2) {
+        return $num1 + $num2;
+    }
+//Takes two numbers as arguments and returns their sum.
+
+    public static function add($num1, $num2) {
+        if (!is_numeric($num1) || !is_numeric($num2)) {
+            throw new \InvalidArgumentException("Both inputs must be numeric.");
+        }
+        return $num1 + $num2;
+    }
+//Takes an integer 'n' as an argument and returns an array of
+    public static function generateFibonacciSequence($n) {
+        if (!is_int($n)) {
+            throw new \InvalidArgumentException("Inputs must be Integer.");
+        }
+        $fibSequence = array();
+        if ($n > 0) {
+            $a = 0;
+
+
+     //Takes an integer 'n' as an argument and returns an array of
+    public static function generateFibonacciSequence($n) {
+        $fibSequence = array();
+        if ($n > 0) {
+            $a = 0;
+            $b = 1;
+            for ($i = 0; $i < $n; $i++) {
+                $fibSequence[] = $a;
+                $temp = $a;
+                $a = $b;
+                $b = $temp + $b;
+            }
+        }
+        return $fibSequence;
     }
 }
 
 // Example usage:
-$numbers = [1, 2, 3, 4, 5];
-echo "Sum: " . Practical::calculateSum($numbers) . PHP_EOL;
+Practical::printHello();
+echo "\n";
 
-$evenNumber = 6;
-echo "Is $evenNumber even? " . (Practical::isEven($evenNumber) ? "Yes" : "No") . PHP_EOL;
+$sum = Practical::add(5, 7);
+echo "Sum: $sum\n";
 
-$stringToConvert = "hello";
-echo "Uppercase: " . Practical::convertToUpperCase($stringToConvert) . PHP_EOL;
+$fibonacciSequence = Practical::generateFibonacciSequence(10);
+echo "Fibonacci Sequence: " . implode(", ", $fibonacciSequence);
+
 ?>
+
