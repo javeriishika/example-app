@@ -16,5 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/veggies/baigan',[YourController::class, 'yourMethod']);
+Route::get('/veggies/baigan',function() {
+    return'baigan';
+});
 

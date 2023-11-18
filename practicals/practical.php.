@@ -1,0 +1,58 @@
+<?php
+
+class Practical
+{
+    /**
+     * Prints "Hello, World!"
+     */
+    public static function printHello()
+    {
+        echo "Hello, World!\n";
+    }
+
+    /**
+     * Adds two numbers.
+     *
+     * @param int $num1 First number
+     * @param int $num2 Second number
+     *
+     * @return int Sum of two numbers
+     */
+    public static function add($num1, $num2)
+    {
+        return $num1 + $num2;
+    }
+
+    /**
+     * Generates a Fibonacci sequence.
+     *
+     * @param int $n Number of elements in the Fibonacci sequence
+     *
+     * @return array Fibonacci sequence
+     */
+    public static function generateFibonacciSequence($n)
+    {
+        $fibonacciSequence = [];
+
+        $first = 0;
+        $second = 1;
+
+        for ($i = 0; $i < $n; $i++) {
+            $fibonacciSequence[] = $first;
+
+            $next = $first + $second;
+            $first = $second;
+            $second = $next;
+        }
+
+        return $fibonacciSequence;
+    }
+}
+
+// Example usage:
+// Practical::printHello();
+// $sum = Practical::add(3, 4);
+// $fibonacciSequence = Practical::generateFibonacciSequence(5);
+
+?>
+
