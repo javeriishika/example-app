@@ -1,4 +1,5 @@
 <?php
+use Practicals\songs;
 /**
  * Class representing a Song with basic properties.
  */

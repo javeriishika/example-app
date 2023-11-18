@@ -1,24 +1,20 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+namespace Tests\Feature;
 
-class YourTest extends TestCase
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+
+class SongsTest extends TestCase
 {
-    // ... (your existing test methods)
-
-    public function testSongsEndpointExists()
+    /**
+     * A basic feature test songs.
+     */
+    public function testSongsOk(): void
     {
-        // Make a request to /songs
         $response = $this->get('/songs');
 
-        // Assert that the response status code is 200 (OK)
-        $this->assertEquals(200, $response->getStatusCode());
-
-        // Optionally, you can further assert the response content or structure if needed
-        // For example, you might check if the response contains certain data expected from /songs
-        // $this->assertContains('expected_data', $response->getBody()->getContents());
+        $response->assertStatus(200);
     }
-
-    // ... (other test methods)
 }
-

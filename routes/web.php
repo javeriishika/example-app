@@ -12,11 +12,35 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/veggies/baigan',function() {
-    return'baigan';
+Route::get('/songs', function () {
+    return "Songs";
 });
+Route::get('/songs', function () {
+  $song1 = new songs();
+  $song1->setTitle("Stan");
+  $song1->setArtist("Eminem");
+
+  $song2 = new songs();
+  $song2->setTitle("Nothing Else Matters");
+  $song2->setArtist("Metallica");
+
+  $song3 = new songs();
+  $song3->setTitle("With You");
+  $song3->setArtist("A P Dhillon");
+
+  return view('songs', [ 'songs' => [ $song1, $song2, $song3 ] ]); 
+});
+Route::get('/songs', function () {
+    $song = new songs();
+    $song->setTitle('With You');
+    return view('songs', [ 'song' => $song ]);
+});
+Route::get('/veggies/{veggiename}', function (string $veggiename) {
+        return $veggiename;
+})->whereIn('veggiename', ['baigan', 'bhindi', 'aaloo','gobhi']);
 
