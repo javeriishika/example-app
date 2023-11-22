@@ -43,6 +43,11 @@ Route::get('/songss', function () {
 
   return view('songs', [ 'songs' => [ $song1, $song2, $song3 ] ]); 
 });
+
+Route::get('/songs_static', function () {
+    return view('songs_static');
+});
+
 Route::get('/veggies/{veggiename}', function (string $veggiename) {
         return $veggiename;
 })->whereIn('veggiename', ['baigan', 'bhindi', 'aaloo','gobhi']);
