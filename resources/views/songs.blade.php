@@ -44,7 +44,7 @@
 @endforeach
 </table>
 <x-layouts.main>
-</x-layouts.main>
+</x-layouts.main PageName='All Songs' >
 </body>
 </html>
 
