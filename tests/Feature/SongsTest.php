@@ -1,34 +1,25 @@
 use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Client;
 
-class SongsTest extends TestCase {
-    
-    public function testSongsStaticEndpoint() {
-        // Assuming you have a function to make an HTTP request to your /songs_static endpoint
-        $response = makeHttpRequest('/songs_static');
+class SongsTest extends TestCase
+{
+    protected $httpClient;
 
-        // Failing assertion - Expected 200, but the actual status is intentionally set to fail
-        $this->assertEquals(200, $response->getStatusCode());
+    protected function setUp(): void
+    {
+        // Initialize the HTTP client before each test
+        $this->httpClient = new Client([
+            'base_uri' => 'http://your-app-base-url', // Replace with the actual base URL of your application
+        ]);
     }
 
-    // Helper function to simulate making an HTTP request
-    private function makeHttpRequest($endpoint) {
-        // Assuming you have a function to make an HTTP request
-        // This is a simplified example; you might use a library like Guzzle or any other HTTP client
-        // to make actual HTTP requests in your application
-        // Here, I'm just returning a mock response for demonstration purposes
-        return new MockHttpResponse(500); // Assuming the endpoint always returns a 500 status code
-    }
-}
+    public function testSongsStaticEndpointReturns200()
+    {
+        // Send a request to the /songs_static endpoint
+        $response = $this->httpClient->get('/songs_static');
 
-// MockHttpResponse class for demonstration purposes
-class MockHttpResponse {
-    private $statusCode;
-
-    public function __construct($statusCode) {
-        $this->statusCode = $statusCode;
-    }
-
-    public function getStatusCode() {
-        return $this->statusCode;
+        // Assert that the response status code is 404 (this is intentionally incorrect for a failing test)
+        $this->assertEquals(404, $response->getStatusCode());
     }
 }
+
