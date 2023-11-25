@@ -43,6 +43,8 @@
 </tr>
 @endforeach
 </table>
+<x-layouts.main>
+</x-layouts.main>
 </body>
 </html>
 
